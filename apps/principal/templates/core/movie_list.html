@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container">
+
+	<div class="page-header">
+	    <a class="btn btn-primary pull-right" href="/nuevo"><i class="glyphicon glyphicon-plus"></i> Nueva Recepcion</a>
+		<h2><a href="/">Listado de Facturas</a></h2>
+	</div>
+
+		<table class="table table-striped">
+		    <thead>
+		        <tr>
+		            <th>ID</th>
+		            <th>Empresa</th>
+		            <th>Factura</th>
+					<th>Fecha Recepcion</th>
+					<th>Concepto</th>
+					<th>Pagada</th>
+		        </tr>
+		    </thead>
+		    <tbody>
+		    {% for movie in factura %}
+		        <tr>
+	            	<td><a href="#">{{ movie.id }}</a></td>
+	            	<td>{{ movie.empresa }}</td>
+	            	<td>{{ movie.numFactura }}</td>
+	                <td>{{ movie.fechaRecepcion|date:"SHORT_DATE_FORMAT"}}</td>
+	                <td>{{ movie.concepto }}</td>
+	            	<td>{{ movie.estatus}}</td>
+	            	 
+		        </tr>
+		    {% endfor %}
+		    </tbody>
+		</table>
+	 
+</div>
+ <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+  $(function(){ 
+    $( "#fecha" ).datepicker();   
+  });
+  </script>
+{% endblock content %}
